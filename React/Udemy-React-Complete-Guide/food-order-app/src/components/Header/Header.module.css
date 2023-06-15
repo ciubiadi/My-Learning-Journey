@@ -1,0 +1,36 @@
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 5em;
+  padding-right: 5em;
+  background-color: rgb(128, 38, 6);
+  color: white;
+}
+
+.header {
+  padding: 1em;
+  display: flex;
+  justify-content: space-between;
+}
+
+.brand {
+  padding: 1em 3em;
+  font-size: larger;
+  font-weight: bolder;
+}
+
+.cart-container {
+  display: flex;
+  padding: 1em 3em;
+  background-color: #451502;
+  border-radius: 3em;
+}
+
+.cart-text {
+  margin: auto 0.5em auto 0em;
+}
+
+.cart-items-number {
+  margin: auto;
+}
