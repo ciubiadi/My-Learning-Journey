@@ -1,10 +1,11 @@
 import React from "react";
-import "./Input.module.css";
+import styles from "./Input.module.css";
 
-const Input = () => {
+const Input = (props) => {
   return (
-    <div>
-      <input />
+    <div className={styles.input}>
+      <label htmlFor={props.input.id}>{props.label}</label>
+      <input {...props.input} />
     </div>
   );
 };

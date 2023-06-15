@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./Meals.module.css";
 import { DUMMY_MEALS } from "../../assets/utils/dummy-meals";
 import Card from "../UI/Card/Card";
-import MealItem from "./MealItem";
+import MealItem from "./MealItem/MealItem";
 
 const Meals = () => {
   const mealsList = DUMMY_MEALS.map((meal) => (
