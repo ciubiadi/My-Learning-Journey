@@ -1,17 +1,20 @@
 import React from "react";
 import styles from "./Header.module.css";
 
-const Header = () => {
+import CartIcon from "../Cart/CartIcon";
+
+const Header = (props) => {
   return (
-    <div className={styles.container}>
-      <div className={styles.header}>
-        <div className={styles.brand}>ReactMeals</div>
-        <div className={styles["cart-container"]}>
-          <div className={styles["cart-text"]}>Your Cart</div>
-          <div className={styles["cart-items-number"]}>2</div>
-        </div>
-      </div>
-    </div>
+    <header className={styles.header}>
+      <h1>ReactMeals</h1>
+      <button className={styles.button}>
+        <span className={styles.icon}>
+          <CartIcon />
+        </span>
+        <span>Your Cart</span>
+        <span className={styles.badge}>4</span>
+      </button>
+    </header>
   );
 };
 

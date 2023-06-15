@@ -1,47 +1,14 @@
 import React from "react";
 import styles from "./Main.module.css";
+import mealsImage from "./../../assets/meals.jpg";
 
 const Main = () => {
   return (
-    <div className={styles["main-content"]}>
-      <div className={styles.image}>
-        {/* <img src="/images/meals.jpg"></img> */}
+    <React.Fragment>
+      <div className={styles["main-image"]}>
+        <img src={mealsImage} alt="A table full of food!" />
       </div>
-      <div className={styles["food-list"]}>
-        <div className={styles["food-item"]}>
-          <div className={styles["food-item-details"]}>
-            <p>Food Name</p>
-            <p>Food Description</p>
-            <p>Food Price</p>
-          </div>
-          <div className={styles["food-item-action"]}>
-            <div>
-              <label>Amount</label>
-              <input type="text" />
-            </div>
-            <div>
-              <button>+Add</button>
-            </div>
-          </div>
-        </div>
-        <div className={styles["food-item"]}>
-          <div className={styles["food-item-details"]}>
-            <p>Food Name</p>
-            <p>Food Description</p>
-            <p>Food Price</p>
-          </div>
-          <div className={styles["food-item-action"]}>
-            <div>
-              <label>Amount</label>
-              <input type="text" />
-            </div>
-            <div>
-              <button>+Add</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    </React.Fragment>
   );
 };
 
