@@ -5,7 +5,11 @@ import Modal from "../UI/Modal/Modal";
 import StateManagement from "../../store/state-management";
 
 const Cart = (props) => {
-  const ctx = useContext(StateManagement);
+  // const ctx = useContext(StateManagement);
+  const closeCartModalHandler = () => {
+    props.closeCartHandler();
+  };
+
   const cartItems = (
     <ul className={styles["cart-items"]}>
       {[{ id: "c1", name: "sushi", amount: "2", price: "12.99" }].map(
@@ -23,7 +27,11 @@ const Cart = (props) => {
         <span>35.62</span>
       </div>
       <div className={styles.actions}>
-        <button className={styles["button--alt"]} onClick={ctx.closeCart}>
+        {/* <button className={styles["button--alt"]} onClick={ctx.closeCart}> */}
+        <button
+          className={styles["button--alt"]}
+          onClick={closeCartModalHandler}
+        >
           Close
         </button>
         <button className={styles.button}>Order</button>

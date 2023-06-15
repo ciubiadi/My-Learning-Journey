@@ -3,13 +3,14 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { StateContextProvider } from "./store/state-management";
+// import { StateContextProvider } from "./store/state-management";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <StateContextProvider>
-    <App />
-  </StateContextProvider>
+  // <StateContextProvider>
+  //   <App />
+  // </StateContextProvider>
+  <App />
 );
 
 // If you want to start measuring performance in your app, pass a function
