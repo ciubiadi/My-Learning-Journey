@@ -1,0 +1,56 @@
+React has 1 main job : to focus on Render UI and React to the Userd Input
+In other words, it Evcaluate & Render JSX, it manage States and Props
+
+
+An Effect (or SideEffect) deals with anything else :
+- It stores data in browser
+- it sends HTTP Requests to backend servers
+- set and manage timers
+- not bring directly something to the screen
+These tasks must happen outside the normal component evaluation
+
+We can handle with the useEffect React Hook the side effects.
+
+Inside the useEffect method, we will have :
+- a function that should be executed 
+after every component evaluation if the specified dependencies changed
+- dependencies of this effect - the function only runs if the dependencies changed
+syntax : useEffect(() => {}, [dependencies]);
+
+
+If you want a useEffect to run only once you need to have an empty array for the dependencies parameter.
+
+useEffect Summary: 
+- if no dependencies parameter is empty than it will run only once
+- The Cleanup function runs after the first run but before the state function as a whole runs (the effect function)
+- the cleanup function will run when the component is removed
+
+useEffect only runs AFTER the state was changed!!!
+
+//// Reducers
+useReducer helps with state management and is especially useful for more complex state
+ 
+Sometimes you have more complex state - for example if it got multiple states, multiple ways of changing it
+or dependecies to other states
+
+useState vs useReducer
+useState is :
+- the main state management
+- great for independend piece of state/data
+- great if state updates are easy and limited to a few kinds of updates
+
+useReducer is :
+- great if you need "more power" and use more complex logic
+- great if you have related piece of state/data
+- can be helpful if you have more complex state updates
+
+======================
+///// Context API - React Context
+One of the approaches for using Context is to separate Authentication for example, so we can move the entire login from App to AuthContext
+for example
+
+Context Limitations
+- React Context is NOT optimized for high frequency changes 
+
+
+
