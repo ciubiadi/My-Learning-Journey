@@ -6,9 +6,6 @@ import StateManagement from "../../store/state-management";
 
 const Cart = (props) => {
   // const ctx = useContext(StateManagement);
-  const closeCartModalHandler = () => {
-    props.closeCartHandler();
-  };
 
   const cartItems = (
     <ul className={styles["cart-items"]}>
@@ -20,7 +17,7 @@ const Cart = (props) => {
     </ul>
   );
   return (
-    <Modal>
+    <Modal closeCartHandler={props.closeCartHandler}>
       {cartItems}
       <div className={styles.total}>
         <span>Total Amount</span>
@@ -30,7 +27,7 @@ const Cart = (props) => {
         {/* <button className={styles["button--alt"]} onClick={ctx.closeCart}> */}
         <button
           className={styles["button--alt"]}
-          onClick={closeCartModalHandler}
+          onClick={props.closeCartHandler}
         >
           Close
         </button>
