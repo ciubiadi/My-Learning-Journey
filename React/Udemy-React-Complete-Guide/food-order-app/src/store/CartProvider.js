@@ -14,27 +14,20 @@ const cartReducer = (state, action) => {
         (elem) => elem.id === action.item.id
       );
 
-      const existingCartItem = state.items[itemAlreadyInCart];
-      let updatedItems;
-      let updatedTotalAmount =
-        state.totalAmount + action.item.price * action.item.amount;
+      let updatedItems = state.items;
 
       //item already added to the cart so I need to update the amount
       if (itemAlreadyInCart) {
-        const updatedItem = {
-          ...existingCartItem,
-          amount: existingCartItem.amount + action.item.amount,
-        };
-        updatedItems = [...state.items];
-        updatedItems[existingCartItem] = updatedItem;
+        //update just the amount of that item
+        state.items[itemAlreadyInCart].amount += action.item.amount;
       } else {
         updatedItems = state.items.concat(action.item);
       }
-      // const newTotalAmount =
-      //   state.totalAmount + action.item.price * action.item.amount;
+      const newTotalAmount =
+        state.totalAmount + action.item.price * action.item.amount;
       return {
         items: updatedItems,
-        totalAmount: updatedTotalAmount,
+        totalAmount: newTotalAmount,
       };
 
     case ACTIONS.REMOVE:
