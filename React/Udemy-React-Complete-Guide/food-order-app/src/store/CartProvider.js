@@ -15,9 +15,8 @@ const cartReducer = (state, action) => {
       );
 
       let updatedItems = state.items;
-
       //item already added to the cart so I need to update the amount
-      if (itemAlreadyInCart) {
+      if (itemAlreadyInCart != -1) {
         //update just the amount of that item
         state.items[itemAlreadyInCart].amount += action.item.amount;
       } else {
