@@ -7,22 +7,29 @@ const ACTIONS = {
 };
 
 const cartReducer = (state, action) => {
-  console.log(state.totalAmount);
-  console.log(action.item);
-  console.log(state.items);
   switch (action.type) {
     case ACTIONS.ADD:
-      const updatedItems = state.items.concat(action.item);
+      //find index of item already existing in the cart
+      const itemAlreadyInCart = state.items.findIndex(
+        (elem) => elem.id === action.item.id
+      );
+
+      let updatedItems = state.items;
+
+      //item already added to the cart so I need to update the amount
+      if (itemAlreadyInCart) {
+        //update just the amount of that item
+        state.items[itemAlreadyInCart].amount += action.item.amount;
+      } else {
+        updatedItems = state.items.concat(action.item);
+      }
       const newTotalAmount =
         state.totalAmount + action.item.price * action.item.amount;
       return {
         items: updatedItems,
         totalAmount: newTotalAmount,
       };
-    // return {
-    //   items: [...state.items],
-    //   totalAmount: state.totalAmount + 1,
-    // };
+
     case ACTIONS.REMOVE:
       return {
         ...state,
@@ -35,6 +42,11 @@ const cartReducer = (state, action) => {
 
 const CartContextProvider = (props) => {
   const addItemToCartHandler = (item) => {
+    // const test = cartState.items.find((elem) => elem.name === item.name);
+    // console.log("cartState");
+    // console.log(cartState);
+    // console.log("test");
+    // console.log(test);
     dispatchCart({ type: ACTIONS.ADD, item: item });
   };
 

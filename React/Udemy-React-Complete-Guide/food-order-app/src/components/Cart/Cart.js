@@ -10,11 +10,6 @@ const Cart = (props) => {
   const totalAmount = `$${ctx.totalAmount.toFixed(2)}`;
   const cartHasItems = ctx.items.length > 0;
 
-  console.log("cart props");
-  console.log(props);
-  console.log("cart context");
-  console.log(ctx);
-
   const cartItems = (
     <ul className={styles["cart-items"]}>
       {ctx.items.map((item) => (
@@ -26,7 +21,7 @@ const Cart = (props) => {
   );
   return (
     <Modal closeCartHandler={props.closeCartHandler}>
-      {cartItems}
+      {cartHasItems ? cartItems : <p>No items in the cart</p>}
       <div className={styles.total}>
         <span>Total Amount</span>
         <span>{totalAmount}</span>
