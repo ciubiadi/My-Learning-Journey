@@ -11,10 +11,8 @@ const Header = (props) => {
   // const context = useContext(StateManagement);
   const cartContext = useContext(CartContext);
 
-  const { cartItems } = cartContext;
-
   //  calculate not just the items, but their amounts as well
-  const numberOfCartItems = cartItems.reduce((currentNumber, item) => {
+  const numberOfCartItems = cartContext.items.reduce((currentNumber, item) => {
     return currentNumber + item.amount;
   }, 0);
 
@@ -37,7 +35,7 @@ const Header = (props) => {
     return () => {
       clearTimeout(timer);
     };
-  }, [cartItems]);
+  }, [cartContext.items]);
 
   return (
     <header className={styles.header}>
