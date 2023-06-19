@@ -1,40 +1,54 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
+
+import Modal from "../UI/Modal/Modal";
+import CartItem from "./CartItem/CartItem";
 import styles from "./Cart.module.css";
 import CartContext from "../../store/cart-context";
-//components
-import CartItem from "./CartItem/CartItem";
-import Modal from "../UI/Modal/Modal";
 
 const Cart = (props) => {
-  const ctx = useContext(CartContext);
-  const totalAmount = `$${ctx.totalAmount.toFixed(2)}`;
-  const cartHasItems = ctx.items.length > 0;
+  const cartCtx = useContext(CartContext);
+
+  const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`;
+  const hasItems = cartCtx.items.length > 0;
+
+  const cartItemRemoveHandler = (id) => {
+    cartCtx.removeItem(id);
+  };
+
+  const cartItemAddHandler = (item) => {
+    cartCtx.addItem({ ...item, amount: 1 });
+  };
 
   const cartItems = (
     <ul className={styles["cart-items"]}>
-      {ctx.items.map((item) => (
-        <CartItem key={item.id} item={item}>
-          {item.name}
-        </CartItem>
+      {cartCtx.items.map((item) => (
+        <CartItem
+          key={item.id}
+          name={item.name}
+          amount={item.amount}
+          price={item.price}
+          onRemove={cartItemRemoveHandler.bind(null, item.id)}
+          onAdd={cartItemAddHandler.bind(null, item)}
+        />
       ))}
     </ul>
   );
+
   return (
-    <Modal closeCartHandler={props.closeCartHandler}>
-      {cartHasItems ? cartItems : <p>No items in the cart</p>}
+    <Modal onClose={props.onClose}>
+      {cartItems}
       <div className={styles.total}>
         <span>Total Amount</span>
         <span>{totalAmount}</span>
       </div>
       <div className={styles.actions}>
-        {/* <button className={styles["button--alt"]} onClick={ctx.closeCart}> */}
         <button
           className={styles["button--alt"]}
           onClick={props.closeCartHandler}
         >
           Close
         </button>
-        {cartHasItems && <button className={styles.button}>Order</button>}
+        {hasItems && <button className={styles.button}>Order</button>}
       </div>
     </Modal>
   );
