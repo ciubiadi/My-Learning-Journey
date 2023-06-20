@@ -1,0 +1,6 @@
+So React is a JS library for building user interfaces. We use components to effectively compose and 
+update user interfaces. 
+The ReactDOM is the interface to the web,  ReactJS doesn't know the web. ReactDOM is responsible for
+what the user sees.
+
+React compares the virtual DOM with the real DOM.  
