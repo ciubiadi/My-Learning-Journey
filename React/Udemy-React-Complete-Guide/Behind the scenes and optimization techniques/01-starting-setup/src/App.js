@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import Button from "./components/UI/Button/Button";
+import DemoOutput from "./components/Demo/DemoOutput";
 
 import "./App.css";
 
@@ -13,12 +15,20 @@ function App() {
   };
 
   return (
+    // The App component is rerendered when the button is clicked because the state is managed in the App omponent,
+    // even if the change vissualy affects only the DemoOutput
     <div className="app">
       <h1>Hi there!</h1>
-      {showP && <p>This is the p</p>}
-      <button onClick={toggleP}>Toggle P</button>
+      {/* {showP && <p>This is the p</p>} */}
+      <DemoOutput show={false} />
+      <Button onClick={toggleP}>Toggle P</Button>
     </div>
   );
 }
 
 export default App;
+
+/*
+
+
+*/
