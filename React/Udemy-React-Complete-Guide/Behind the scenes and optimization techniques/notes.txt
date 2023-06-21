@@ -3,4 +3,6 @@ update user interfaces.
 The ReactDOM is the interface to the web,  ReactJS doesn't know the web. ReactDOM is responsible for
 what the user sees.
 
-React compares the virtual DOM with the real DOM.  
+React compares the virtual DOM with the real DOM and the React DOM will update the Real DOM after the comparisson. 
+ReactDOM will not rerender the entire real DOM, it would not touch the existing things, it will only insert / render
+the modified elements.
