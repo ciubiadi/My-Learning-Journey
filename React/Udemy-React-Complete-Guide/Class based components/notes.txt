@@ -1,1 +1,17 @@
 The only time we must use class based components is when we need Error Boundries
+
+componentDidMount() :
+- is called once component is mounted ( was evaluated and rendered )
+- is equivalent with the useEffect with empty dependecy array (e.g : useEffect(() => {}, [])  )
+
+componentDidUpdate() :
+- is called once component was updated ( was evaluated & rendered )
+- is equivalent with the useEffect with some dependencies. ( Whenever the dependecy change the componenet will re-render)
+
+componentWillUnmount() :
+- is called right before the component is unmounted
+- the equivalent of this is the cleanup function from useEffect 
+- e.g : useEffect(() => {
+    return () => {}
+},[])
+
