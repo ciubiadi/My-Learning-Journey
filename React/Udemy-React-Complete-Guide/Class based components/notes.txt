@@ -1,0 +1,1 @@
+The only time we must use class based components is when we need Error Boundries
