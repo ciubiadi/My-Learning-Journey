@@ -15,3 +15,10 @@ componentWillUnmount() :
     return () => {}
 },[])
 
+componentDidCatch() : 
+- can be added to any class based component and whenever I add it it makes that class based 
+componenet an Error Boundary.
+- it can't be used with functional components
+- this runs whenever one of the child components throws / generates an error. Therefore I add a render method and 
+I return props.children in order to wrap the ErrorBoudndary around components which should be protected by that 
+component.( we wrap this around components may throw errors)

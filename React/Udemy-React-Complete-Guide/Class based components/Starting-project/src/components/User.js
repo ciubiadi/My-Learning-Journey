@@ -5,6 +5,9 @@ class User extends Component {
   // constructor() {
   //   super();
   // }
+  componentWillUnmount() {
+    console.log("User will unmount!");
+  }
 
   render() {
     // we can access props trough this because of the class Component we extend
