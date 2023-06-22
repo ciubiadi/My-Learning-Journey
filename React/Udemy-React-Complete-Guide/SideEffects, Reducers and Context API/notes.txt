@@ -9,9 +9,9 @@ An Effect (or SideEffect) deals with anything else :
 - not bring directly something to the screen
 These tasks must happen outside the normal component evaluation
 
-We can handle with the useEffect React Hook the side effects.
+I can handle with the useEffect React Hook the side effects.
 
-Inside the useEffect method, we will have :
+Inside the useEffect method, I will have :
 - a function that should be executed 
 after every component evaluation if the specified dependencies changed
 - dependencies of this effect - the function only runs if the dependencies changed
@@ -46,7 +46,7 @@ useReducer is :
 
 ======================
 ///// Context API - React Context
-One of the approaches for using Context is to separate Authentication for example, so we can move the entire login from App to AuthContext
+One of the approaches for using Context is to separate Authentication for example, so I can move the entire login from App to AuthContext
 for example
 
 Context Limitations
