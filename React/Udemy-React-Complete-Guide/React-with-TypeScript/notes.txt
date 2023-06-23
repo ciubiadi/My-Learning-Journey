@@ -1,0 +1,5 @@
+- Typescript is called superset to Javascript. It's a programming language build on Javascipt (it extends JS). 
+- Typescript adds static typing to Javascript
+- JS knows on its own the types, without Typescript
+- Typesript does not run in the browser so we need to compule Typesript to Javascript
+- 
