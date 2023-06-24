@@ -80,4 +80,5 @@ function insertAtBegining<T>(array: T[], value: T) {
 
 const demoArray = [2, 3, 4];
 const updatedDemoArray = insertAtBegining(demoArray, -1);
+updatedDemoArray[0].split("");
 console.log(updatedDemoArray);
