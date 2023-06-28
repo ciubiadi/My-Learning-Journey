@@ -11,3 +11,14 @@ APIs in the context of HTTP requests, are typically REST or GraphQL APIs, which 
 different standards for how a server should expose its data.
 
 The Star Wars API it's a REST API.
+
+Links used
+- https://console.firebase.google.com/u/0/project/react-star-wars-2e4cd/database/react-star-wars-2e4cd-default-rtdb/data/~2F
+- https://swapi.dev/api/people
+
+To do :
+- Implement removing item
+- split into multiple components ( for example, the CharactersList )
+- manage state with useReduer
+- add useContext
+- auto fetch characterList after adding item into list
