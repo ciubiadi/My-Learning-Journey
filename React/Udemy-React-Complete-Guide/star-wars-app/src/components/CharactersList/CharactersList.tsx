@@ -6,9 +6,11 @@ const CharactersList: React.FC<{
   birthYear: string;
 }> = (props) => {
   return (
-    <div className={styles.card}>
-      <p>Name: {props.name}</p>
-      <p>Birth Year: {props.birthYear}</p>
+    <div className={styles.columns}>
+      <div className={styles.card}>
+        <p>Name: {props.name}</p>
+        <p>Birth Year: {props.birthYear}</p>
+      </div>
     </div>
   );
 };
