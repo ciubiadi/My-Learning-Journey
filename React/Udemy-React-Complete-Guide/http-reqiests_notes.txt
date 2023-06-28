@@ -1,0 +1,13 @@
+- Browser-side Apps Don't Directly Talk to Databases because of the security problems may be causd.
+The backend application written with server-side code will communicate with the Database instead. 
+The React app will communicate with Backend App so that's how I can have a secure connection with
+the Database.
+
+API = Application Programming Interface
+It means that in my code I'm delaing with something whichhas a cleary defined interface and rules 
+on how I can achieve certain results and do certain tasks.
+
+APIs in the context of HTTP requests, are typically REST or GraphQL APIs, which are basically 2 
+different standards for how a server should expose its data.
+
+The Star Wars API it's a REST API.
