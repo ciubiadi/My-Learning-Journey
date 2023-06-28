@@ -11,6 +11,7 @@ function App() {
 
   const [characters, setCharacters] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   // const dummyMovies: Array<SWCharacter> = [
   //   {
@@ -40,10 +41,26 @@ function App() {
   // With Async + await
   async function fetchCharactersHandler() {
     setIsLoading(true);
-    const response = await fetch("https://swapi.dev/api/people");
-    const data = await response.json();
-    console.log(data);
-    setCharacters(data.results);
+    setError(null);
+    // const response = await fetch("https://swapi.dev/api/people");
+    // Fetching wrong url below
+    try {
+      // const response = await fetch("https://swapi.dev/api/peopleWrongURL");
+      const response = await fetch("https://swapi.dev/api/people");
+
+      // I can use response.status as well
+      if (!response.ok) {
+        throw new Error("Something went wrong!");
+      }
+
+      const data = await response.json();
+      console.log(data);
+
+      setCharacters(data.results);
+      setIsLoading(false);
+    } catch (error: any) {
+      setError(error.message);
+    }
     setIsLoading(false);
   }
 
@@ -53,6 +70,10 @@ function App() {
         <button onClick={fetchCharactersHandler}>Fetch Characters</button>
       </section>
       {isLoading && <p>Loading...</p>}
+      {!isLoading && characters.length === 0 && !error && (
+        <p>No movie characters found</p>
+      )}
+      {!isLoading && error && <p>{error}</p>}
       {!isLoading &&
         characters.length > 0 &&
         characters.map((item: SWCharacter) => {
@@ -64,9 +85,6 @@ function App() {
             />
           );
         })}
-      {!isLoading && characters.length === 0 && (
-        <p>No movie characters found</p>
-      )}
     </div>
   );
 }
