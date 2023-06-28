@@ -10,6 +10,7 @@ function App() {
   };
 
   const [characters, setCharacters] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   // const dummyMovies: Array<SWCharacter> = [
   //   {
@@ -38,10 +39,12 @@ function App() {
 
   // With Async + await
   async function fetchCharactersHandler() {
+    setIsLoading(true);
     const response = await fetch("https://swapi.dev/api/people");
     const data = await response.json();
     console.log(data);
     setCharacters(data.results);
+    setIsLoading(false);
   }
 
   return (
@@ -49,16 +52,21 @@ function App() {
       <section>
         <button onClick={fetchCharactersHandler}>Fetch Characters</button>
       </section>
-      {characters.map((item: SWCharacter) => {
-        // return <p>{item.name}</p>;
-        return (
-          <CharactersList
-            key={item.url}
-            name={item.name}
-            birthYear={item.birth_year}
-          />
-        );
-      })}
+      {isLoading && <p>Loading...</p>}
+      {!isLoading &&
+        characters.length > 0 &&
+        characters.map((item: SWCharacter) => {
+          return (
+            <CharactersList
+              key={item.url}
+              name={item.name}
+              birthYear={item.birth_year}
+            />
+          );
+        })}
+      {!isLoading && characters.length === 0 && (
+        <p>No movie characters found</p>
+      )}
     </div>
   );
 }
