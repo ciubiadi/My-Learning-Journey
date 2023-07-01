@@ -1,0 +1,4 @@
+What are Custom Hooks?
+They are in the end just regular functions just as the built-in functions, like useState, but 
+they are functions which can contain stateful logic. Unlike regular functions, custom hooks can 
+use other react hooks including custom hooks.
