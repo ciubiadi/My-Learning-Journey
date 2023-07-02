@@ -10,30 +10,25 @@ type Task = { id: number; text: string };
 function App() {
   const [tasks, setTasks] = useState<any>([]);
 
-  const transformTasks = (tasksObj: any) => {
-    const loadedTasks = [];
-
-    for (const taskKey in tasksObj) {
-      loadedTasks.push({ id: taskKey, text: tasksObj[taskKey].text });
-    }
-
-    setTasks(loadedTasks);
-  };
-
-  const {
-    isLoading,
-    error,
-    sendRequest: fetchTasks,
-  } = useHTTP(
-    {
-      url: "https://task-manager-b5563-default-rtdb.europe-west1.firebasedatabase.app/tasks.json",
-    },
-    transformTasks
-  );
+  const { isLoading, error, sendRequest: fetchTasks } = useHTTP();
 
   useEffect(() => {
-    fetchTasks();
-  }, []);
+    const transformTasks = (tasksObj: any) => {
+      const loadedTasks = [];
+
+      for (const taskKey in tasksObj) {
+        loadedTasks.push({ id: taskKey, text: tasksObj[taskKey].text });
+      }
+
+      setTasks(loadedTasks);
+    };
+    fetchTasks(
+      {
+        url: "https://task-manager-b5563-default-rtdb.europe-west1.firebasedatabase.app/tasks.json",
+      },
+      transformTasks
+    );
+  }, [fetchTasks]);
 
   const taskAddHandler = (task: Task) => {
     setTasks((prevTasks: Array<Task>) => prevTasks.concat(task));
