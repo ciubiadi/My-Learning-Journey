@@ -1,0 +1,6 @@
+If I am only interested to get the value of the input once, the useRef might be better because 
+updating the state for every key stroke is a bit overkill.
+
+But if I need the value for an instant validation for example ( so in other words if I need the
+value of the input for each key stroke ) than the useState would be better. Also if I want to reset
+the input useState will be the winner.
