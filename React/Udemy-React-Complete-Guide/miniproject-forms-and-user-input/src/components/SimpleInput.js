@@ -10,6 +10,10 @@ const SimpleInput = (props) => {
 
   const nameInputChangeHandler = (event) => {
     setName(event.target.value);
+
+    if (event.target.value.trim() !== "") {
+      setNameIsValid(true);
+    }
   };
 
   const nameInputBlurHandler = (event) => {
@@ -17,7 +21,6 @@ const SimpleInput = (props) => {
 
     if (name.trim() === "") {
       setNameIsValid(false);
-      return;
     }
   };
 
