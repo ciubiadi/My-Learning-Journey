@@ -4,3 +4,6 @@ updating the state for every key stroke is a bit overkill.
 But if I need the value for an instant validation for example ( so in other words if I need the
 value of the input for each key stroke ) than the useState would be better. Also if I want to reset
 the input useState will be the winner.
+
+Validations: 
+1. Can not submit empty input
