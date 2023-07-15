@@ -22,7 +22,6 @@ const useInputAgainFromScratch = (validationFormula) => {
 
   return {
     inputValue,
-    inputIsTouched,
     inputIsValid,
     hasError,
     onChangeHandler,

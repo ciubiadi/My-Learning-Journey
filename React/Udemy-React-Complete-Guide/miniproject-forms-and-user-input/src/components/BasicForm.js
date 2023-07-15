@@ -1,4 +1,5 @@
-import useInputAgainFromScratch from "../hooks/use-input-again-from-scratch";
+// import useInputAgainFromScratch from "../hooks/use-input-again-from-scratch";
+import useInputWithReducer from "../hooks/use-input-with-reducer";
 import Input from "./UI/Input";
 
 const BasicForm = (props) => {
@@ -9,7 +10,7 @@ const BasicForm = (props) => {
     onChangeHandler: onChangeFirstName,
     onBlurHandler: onBlurFirstName,
     reset: resetFirstName,
-  } = useInputAgainFromScratch((value) => value.trim() !== "");
+  } = useInputWithReducer((value) => value.trim() !== "");
 
   const {
     inputValue: lastNameInputValue,
@@ -18,7 +19,7 @@ const BasicForm = (props) => {
     onChangeHandler: onChangeLasttName,
     onBlurHandler: onBlurLastName,
     reset: resetLastName,
-  } = useInputAgainFromScratch((value) => value.trim() !== "");
+  } = useInputWithReducer((value) => value.trim() !== "");
 
   const {
     inputValue: emailInputValue,
@@ -27,7 +28,7 @@ const BasicForm = (props) => {
     onChangeHandler: onChangeEmail,
     onBlurHandler: onBlurEmail,
     reset: resetEmail,
-  } = useInputAgainFromScratch((value) =>
+  } = useInputWithReducer((value) =>
     value.match(
       /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     )
