@@ -8,14 +8,19 @@ const Meals = () => {
   const [meals, setMeals] = useState(DUMMY_MEALS);
   // I'm setting this state to true from the beginning because I know everytime the meals will be loadewd so the app will load them
   const [isLoading, setIsLoading] = useState(true);
+  const [httpError, setHttpError] = useState();
 
   useEffect(() => {
     const fetchMeals = async () => {
       const response = await fetch(
-        "https://food-order-app-5060a-default-rtdb.europe-west1.firebasedatabase.app/meals.json"
+        "https://food-order-app-5060a-default-rtdb.europe-west1.firebasedatabase.app/meals"
       );
+
+      if (!response.ok) {
+        throw new Error("Something went wrong!");
+      }
+
       const responseData = await response.json();
-      console.log(responseData);
 
       const loadedMeals = [];
 
@@ -30,13 +35,25 @@ const Meals = () => {
       setMeals(loadedMeals);
       setIsLoading(false);
     };
-    fetchMeals();
+
+    fetchMeals().catch((error) => {
+      setIsLoading(false);
+      setHttpError(error.message);
+    });
   }, []);
 
   if (isLoading) {
     return (
       <section className={styles.MealsLoading}>
         <p>Loading...</p>
+      </section>
+    );
+  }
+
+  if (httpError) {
+    return (
+      <section className={styles.MealsError}>
+        <p>{httpError}</p>
       </section>
     );
   }
