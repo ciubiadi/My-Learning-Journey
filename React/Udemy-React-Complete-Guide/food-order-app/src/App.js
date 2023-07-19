@@ -9,7 +9,7 @@ import Cart from "./components/Cart/Cart";
 import CardProvider from "./store/CartProvider";
 
 // import StateManagement from "./store/state-management";
-
+// https://console.firebase.google.com/u/0/project/food-order-app-5060a/database/food-order-app-5060a-default-rtdb/data (link for backend)
 function App() {
   const [modalCartVisible, setCartModalVisible] = useState(false);
   // const context = useContext(StateManagement);
