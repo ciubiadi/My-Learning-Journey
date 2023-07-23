@@ -1,0 +1,21 @@
+Local State :
+- state that belongs to a single component (ex: listening to user input in a input field)
+- should be managed component-internal with useState() / useReducer()
+
+Cross-Component State:
+- State that affects multiuple components (ex: open/close state of a modal overlay)
+- require prop chains
+
+Aoo Wide State:
+- State that affecets the entire app ( ex: User authentication status )
+- require props chains
+
+
+React Context vs Redux
+Redux and React Context are state management systems for cross-component or app-wide state.
+
+React Context disadvantages:
+- complex setup/management ( I may end up using a lot of context providers nested )
+- performance can be bad ( not optimise for high-frequency state chagnes )
+
+
