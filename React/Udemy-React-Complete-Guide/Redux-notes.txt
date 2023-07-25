@@ -19,3 +19,10 @@ React Context disadvantages:
 - performance can be bad ( not optimise for high-frequency state chagnes )
 
 
+- Components set up subscription to the Central Data Store( State ). 
+- Components never manupulate directly the store data. Reducer functions are responsible for mutating/changing the 
+state data.
+- Components trigger/dispatch actions which describe what should be done, then the actions are forwarded to the reducers.
+Next, the reducer give a new state.
+- The reducer function always take 2 arguments : the old state( or the current state ) and the dispatched action. Also,
+it almost always outputs the new state object.
