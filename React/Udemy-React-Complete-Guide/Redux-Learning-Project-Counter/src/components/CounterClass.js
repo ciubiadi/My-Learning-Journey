@@ -1,6 +1,7 @@
 // Hooks are not usable in class based components
 import React from 'react';
 import {connect} from 'react-redux';
+import classes from './Counter.module.css'
 
 class CounterClass extends React.Component {
     incrementHandler() {

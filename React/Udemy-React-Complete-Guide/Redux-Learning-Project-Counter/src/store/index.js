@@ -1,8 +1,8 @@
-import { createStore } from 'redux';
+// import { createStore } from 'redux';
 import { createSlice, configureStore } from '@reduxjs/toolkit';
 // const redux = require('redux');
 
-const INITIAL_STATE = {
+const INITIAL_COUNTER_STATE = {
     counter: 0,
     showCounter: false
 }
@@ -13,10 +13,10 @@ code
 */
 const counterSlice = createSlice({
     name: 'counter',
-    initialState: INITIAL_STATE,
+    initialState: INITIAL_COUNTER_STATE,
     reducers: {
         increment(state){
-            // Here I am allowed to mutate the state
+            // Here I am allowed to mutate the state but behind the scenes it returns an object will the state #imutable
             state.counter++;
         },
         decrement(state){
@@ -31,7 +31,7 @@ const counterSlice = createSlice({
     }
 });
 
-// const counterReducer = (state = INITIAL_STATE, action) => {
+// const counterReducer = (state = INITIAL_COUNTER_STATE, action) => {
 //     if(action.type === 'increment'){
 //         return {
 //             counter: state.counter + 1,
@@ -61,15 +61,40 @@ const counterSlice = createSlice({
 
 // const store = createStore(counterReducer);
 
-// const store = createStore(counterSlice.reducer);
-/* configureStore combines/merge all reducers into 1 */ 
-const store = configureStore({
-    reducer: counterSlice.reducer
+
+
+const INITIAL_AUTH_STATE = {
+    isAuthenticated: false
+};
+
+const authSlice = createSlice({
+    name: 'authentication',
+    initialState: INITIAL_AUTH_STATE,
+    reducers: {
+        login(state){
+            state.isAuthenticated = true;
+        },
+        logout(state){
+            state.isAuthenticated = false;
+        }
+    }
+
 });
 
+// const store = createStore(counterSlice.reducer);
+/* configureStore combines/merge all reducers into 1 */ 
+// If I have only the CounterSlice, I can use the below syntax
 // const store = configureStore({
-//     reducer: { counter: counterSlice.reducer}
+//     reducer: counterSlice.reducer
 // });
 
+// if I have multiple slices the below syntax will be used, and it basically merge the indiviodual reducers togheter
+const store = configureStore({
+    reducer: { counter: counterSlice.reducer, auth: authSlice.reducer}
+});
+
+
 export const counterActions = counterSlice.actions;
+export const authActions = authSlice.actions;
+
 export default store;

@@ -3,15 +3,14 @@
  connect function can be used as a wrapper around a class component to connect that class component to the store
 */
 import { useSelector, useDispatch } from 'react-redux'; 
-import React from 'react';
 import classes from './Counter.module.css';
 import { counterActions } from '../store/index';
 
 const Counter = () => {
   // get access to the data managed in the store by useSelector
   // in the parameter I say what part of the state I need in the current component
-  const counter = useSelector(state => state.counter);
-  const showCounter = useSelector(state => state.showCounter);
+  const counter = useSelector(state => state.counter.counter);
+  const showCounter = useSelector(state => state.counter.showCounter);
 
   const dispatch = useDispatch();
 
