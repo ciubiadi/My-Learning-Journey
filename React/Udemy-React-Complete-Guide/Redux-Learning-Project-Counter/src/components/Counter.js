@@ -4,7 +4,8 @@
 */
 import { useSelector, useDispatch } from 'react-redux'; 
 import classes from './Counter.module.css';
-import { counterActions } from '../store/index';
+// import { counterActions } from '../store/index';
+import { counterActions } from '../store/counter-slice.js';
 
 const Counter = () => {
   // get access to the data managed in the store by useSelector

@@ -1,35 +1,9 @@
 // import { createStore } from 'redux';
-import { createSlice, configureStore } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 // const redux = require('redux');
 
-const INITIAL_COUNTER_STATE = {
-    counter: 0,
-    showCounter: false
-}
-
-/* I'm preparing a slice of my global state. When I have different pieces of state that are not related directly,
-like an authentication status and a counter status, I can create multiple state slices for a more maintainable 
-code
-*/
-const counterSlice = createSlice({
-    name: 'counter',
-    initialState: INITIAL_COUNTER_STATE,
-    reducers: {
-        increment(state){
-            // Here I am allowed to mutate the state but behind the scenes it returns an object will the state #imutable
-            state.counter++;
-        },
-        decrement(state){
-            state.counter--;
-        },
-        increase(state, action){
-            state.counter = state.counter+action.payload;
-        },
-        toggleCounter(state){
-            state.showCounter = !state.showCounter;
-        }
-    }
-});
+import counterReducer from './counter-slice';
+import authReducer from './auth';
 
 // const counterReducer = (state = INITIAL_COUNTER_STATE, action) => {
 //     if(action.type === 'increment'){
@@ -63,23 +37,7 @@ const counterSlice = createSlice({
 
 
 
-const INITIAL_AUTH_STATE = {
-    isAuthenticated: false
-};
 
-const authSlice = createSlice({
-    name: 'authentication',
-    initialState: INITIAL_AUTH_STATE,
-    reducers: {
-        login(state){
-            state.isAuthenticated = true;
-        },
-        logout(state){
-            state.isAuthenticated = false;
-        }
-    }
-
-});
 
 // const store = createStore(counterSlice.reducer);
 /* configureStore combines/merge all reducers into 1 */ 
@@ -90,11 +48,8 @@ const authSlice = createSlice({
 
 // if I have multiple slices the below syntax will be used, and it basically merge the indiviodual reducers togheter
 const store = configureStore({
-    reducer: { counter: counterSlice.reducer, auth: authSlice.reducer}
+    reducer: { counter: counterReducer, auth: authReducer}
 });
 
-
-export const counterActions = counterSlice.actions;
-export const authActions = authSlice.actions;
 
 export default store;
