@@ -26,3 +26,5 @@ state data.
 Next, the reducer give a new state.
 - The reducer function always take 2 arguments : the old state( or the current state ) and the dispatched action. Also,
 it almost always outputs the new state object.
+
+!! SHOULD NOT MUTATE THE EXISTING STATE, INSTEAD ALWAYS OVERWRITE IT BY RETURNING A BRAND NEW OBJECT !!
