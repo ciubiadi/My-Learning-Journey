@@ -30,3 +30,9 @@ it almost always outputs the new state object.
 !! SHOULD NOT MUTATE THE EXISTING STATE, INSTEAD ALWAYS OVERWRITE IT BY RETURNING A BRAND NEW OBJECT !! => because objwects
 and arrays are are reference values in JS. So for example in the reducer it will work if I will do state.counter++ but
 it is not correct and I should just return a new object like return { counter: state.counter++}.
+
+Reducers must be pure, sde-effet free, synchronous functions
+
+Input (old state + action) => Output ( new state )
+
+So the side-effects and async tasks can be executed inside the COMPONENTS ( with useEffect ) and inside the ACTION CREATORS.
