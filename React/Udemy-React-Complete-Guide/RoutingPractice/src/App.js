@@ -26,7 +26,10 @@ const router = createBrowserRouter([
       // { path: '/products/:productId', element: <ProductDetailPage />}
       
       // Below I have relative paths
-      { path: '', element: <HomePage /> },
+      // { path: '', element: <HomePage /> },
+
+      // Index Route allow me to define a default route that should be loaded if the parent rounte's path is active
+      { index: true, element: <HomePage /> },
       { path: 'products', element: <ProductsPage />},
       { path: 'products/:productId', element: <ProductDetailPage />}
     ]
