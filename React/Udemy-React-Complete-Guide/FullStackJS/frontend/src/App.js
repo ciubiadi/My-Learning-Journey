@@ -1,7 +1,7 @@
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import HomePage from './pages/Home';
-import EventsPage from './pages/Events';
+import EventsPage, { loader as eventsLoader } from './pages/Events';
 import EventDetailPage from './pages/EventDetail';
 import NewEventPage from './pages/NewEvent';
 import EditEventPage from './pages/EditEvent';
@@ -19,18 +19,10 @@ const router = createBrowserRouter([
         path: 'events', 
         element: <EventsRoot />, 
         children: [
-          { index: true, element: <EventsPage />, loader: async () => {
-              const response = await fetch('http://localhost:8080/events');
-
-              if (!response.ok) {
-                console.log('Error!')
-              } else {
-                const resData = await response.json();
-                console.log('resData');
-                console.log(resData);
-                return resData.events;
-              }
-            } 
+          { 
+            index: true, 
+            element: <EventsPage />, 
+            loader: eventsLoader
           },
           { path: 'new', element: <NewEventPage /> },
           { path: ':eventId', element: <EventDetailPage /> },
