@@ -52,3 +52,8 @@ export default App;
   whenever the user will be about to visit that route (just before that route and the JSX gets rendered), the function 
   will be triggered 
 */
+
+/* 
+  I can use useLoaderData() in the element that's assigned to a route AND in all components that might 
+  be used inside that element
+*/

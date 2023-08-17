@@ -28,12 +28,18 @@ function EventsPage() {
 
   return (
     <>
+    {/* Approach #1 */}
       {/* <div style={{ textAlign: 'center' }}>
         {isLoading && <p>Loading...</p>}
         {error && <p>{error}</p>}
       </div> */}
       {/* {!isLoading && fetchedEvents && <EventsList events={fetchedEvents} />} */}
+
+      {/* Appraoch #2 */}
       <EventsList events={events} />
+
+      {/* Approach #3 */}
+      {/* <EventsList /> */}
     </>
   );
 }
