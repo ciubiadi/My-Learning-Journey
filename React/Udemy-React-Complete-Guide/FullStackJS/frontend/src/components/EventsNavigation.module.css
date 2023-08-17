@@ -22,3 +22,8 @@
 .list a.active {
   background-color: var(--color-primary-600);
 }
+
+.list a:hover{
+  color: white;
+  font-weight: bold;
+}

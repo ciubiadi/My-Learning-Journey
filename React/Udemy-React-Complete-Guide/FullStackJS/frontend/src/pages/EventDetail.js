@@ -2,7 +2,8 @@ import { useParams } from "react-router-dom";
 
 const EventDetailPage = () => {
     const {eventId} = useParams();
-    const allparams = useParams();
+    // const params = useParams();
+    // const allparams = useParams();
 
     // const showParams = (e) => {
     //     e.preventDefault();
@@ -12,7 +13,8 @@ const EventDetailPage = () => {
     return (
         <>
             <h1>EditEventPage</h1>
-            <p>{eventId}</p>
+            <p>Event ID: {eventId}</p>
+            {/* <p>Event ID: {params.eventId}</p> */}
             {/* <button onClick={showParams}>Show all params</button> */}
         </>
     );
