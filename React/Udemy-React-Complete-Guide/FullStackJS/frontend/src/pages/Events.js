@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import EventsList from '../components/EventsList';
 
@@ -24,7 +24,15 @@ function EventsPage() {
 //     fetchEvents();
 //   }, []);
 
-    const events = useLoaderData();
+    // #2
+    // const events = useLoaderData();
+
+    // #2
+    const data = useLoaderData();
+    if(data.isError){
+        return <p>{data.message}</p>
+    }
+    const events = data.events;
 
   return (
     <>
@@ -47,14 +55,25 @@ function EventsPage() {
 export default EventsPage;
 
 export async function loader() {
-    const response = await fetch('http://localhost:8080/events');
+    const response = await fetch('http://localhost:8080/eventsIntentionallyErrorPage');
 
     if (!response.ok) {
       console.log('Error!')
+    //   return {
+    //     isError: true,
+    //     message: 'Could not fetch events. '
+    //   }
+        throw { message: 'Could not fetch events.'}; 
     } else {
-      const resData = await response.json();
-      console.log('resData');
-      console.log(resData);
-      return resData.events;
+    //   const resData = await response.json();
+        //   console.log('resData');
+        //   console.log(resData);
+        //   return resData.events;
+        
+        // Return a Response with the
+        // const res= new Response('any data', {status: 201});
+        // return res; 
+
+        return response;
     }
 }

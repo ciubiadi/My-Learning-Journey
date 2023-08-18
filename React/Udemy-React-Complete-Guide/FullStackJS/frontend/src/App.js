@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import HomePage from './pages/Home';
 import EventsPage, { loader as eventsLoader } from './pages/Events';
 import EventDetailPage from './pages/EventDetail';
+import ErrorPage from './pages/Error';
 import NewEventPage from './pages/NewEvent';
 import EditEventPage from './pages/EditEvent';
 import Root from './pages/Root';
@@ -12,6 +13,7 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <Root />,
+    errorElement: <ErrorPage />,
     children: [
       // { path: '', element: <HomePage /> },
       { index: true, element: <HomePage /> },
