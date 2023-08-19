@@ -1,4 +1,4 @@
-import { Form, useNavigate, useNavigation, useActionData } from 'react-router-dom';
+import { Form, useNavigate, useNavigation, useActionData, json, redirect } from 'react-router-dom';
 
 import classes from './EventForm.module.css';
 
@@ -20,7 +20,7 @@ function EventForm(props) {
      but it will take that request that would have been sent and give it to my action. So the request will contain all
      the data that was submitted as part of the form. The request will not be sent automatically to the backend
      but instead to my action. */
-    <Form method="post" className={classes.form}>
+    <Form method={props.method} className={classes.form}>
       {actionData && actionData.errors && <ul>
         {Object.values(actionData.errors).map(error => <li key={error}>{error}</li>)}
         </ul>}
@@ -75,3 +75,41 @@ function EventForm(props) {
 }
 
 export default EventForm;
+
+export async function action({request, params}) {
+  const method = request.method;
+  const data = await request.formData();
+  const eventData = {
+      title: data.get('title'),
+      image: data.get('image'),
+      date: data.get('date'),
+      description: data.get('description')
+  };
+
+  // for creating a new event
+  let url = 'http://localhost:8080/events';
+
+  if(method === 'PATCH'){
+    const eventId = params.eventId;
+    url = 'http://localhost:8080/events/' + eventId;
+  }
+
+  const response = await fetch(url, {
+      method: method,
+      headers: {
+          'Content-Type':'application/json'
+      },
+      body: JSON.stringify(eventData)
+  });
+
+  // 422 is the validation status code I am setting in backend
+  if(response.status === 422){
+      return response;
+  }
+
+  if(!response.ok){
+      throw json({ message: 'Could not save event.' }, { status: 500 })
+  }
+
+  return redirect('/events');
+}
