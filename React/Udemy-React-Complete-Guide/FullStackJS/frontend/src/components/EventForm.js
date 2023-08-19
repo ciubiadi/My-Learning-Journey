@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { Form, useNavigate } from 'react-router-dom';
 
 import classes from './EventForm.module.css';
 
@@ -9,7 +9,11 @@ function EventForm(props) {
   }
 
   return (
-    <form className={classes.form}>
+    /* This Form tag will make sure that the borwser default of sending a request to the backend will be omitted
+     but it will take that request that would have been sent and give it to my action. So the request will contain all
+     the data that was submitted as part of the form. The request will not be sent automatically to the backend
+     but instead to my action. */
+    <Form method="post" className={classes.form}>
       <p>
         <label htmlFor="title">Title</label>
         <input 
@@ -56,7 +60,7 @@ function EventForm(props) {
         </button>
         <button>Save</button>
       </div>
-    </form>
+    </Form>
   );
 }
 
