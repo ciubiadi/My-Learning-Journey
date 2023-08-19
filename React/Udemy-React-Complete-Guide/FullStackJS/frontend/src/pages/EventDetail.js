@@ -1,8 +1,10 @@
-import { useParams, useRouteLoaderData, useLoaderData, json, redirect } from "react-router-dom";
+import { useParams, useRouteLoaderData, useLoaderData, json, redirect, defer, Await } from "react-router-dom";
 import EventItem from "../components/EventItem";
+import EventsList from "../components/EventsList";
+import { Suspense } from "react";
 
 const EventDetailPage = () => {
-    const {eventId} = useParams();
+    // const {eventId} = useParams();
     // const params = useParams();
     // const allparams = useParams();
 
@@ -12,11 +14,23 @@ const EventDetailPage = () => {
     // }
 
     // const data = useLoaderData()
-    const data = useRouteLoaderData('event-detail')
+    // const data = useRouteLoaderData('event-detail')
+    const {event, events} = useRouteLoaderData('event-detail');
 
     return (
         <>
-            <EventItem event={data.event} />
+            <Suspense fallback={<o style={{textAlign: 'center'}}>Event Loading...</o>}>
+                <Await resolve={event}>
+                    {loadedEvent => <EventItem event={loadedEvent} /> }
+                </Await>
+            </Suspense>
+            <Suspense fallback={<o style={{textAlign: 'center'}}>Events Loading...</o>}>
+                <Await resolve={events}>
+                    {loadedEvents => <EventsList events={loadedEvents}/>}
+                </Await>
+            </Suspense>
+            {/* <EventItem event={data.event} /> */}
+            {/* <EventsList events={events}/> */}
             {/* <h1>EditEventPage</h1>
             <p>Event ID: {eventId}</p> */}
 
@@ -27,6 +41,35 @@ const EventDetailPage = () => {
 }
 
 export default EventDetailPage;
+
+async function loadEvent(id){
+    const res = await fetch('http://localhost:8080/events/' + id);
+    if(!res.ok){
+        throw json({message: 'Could not fetch details for selected event.'}, {
+            status: 500
+        })
+    } else {
+        const resData = await res.json();
+        return resData.events;
+    }
+}
+
+async function loadEvents () {
+    const response = await fetch('http://localhost:8080/events');
+
+    if (!response.ok) {
+        throw json(
+            {message: 'Could not fetch events.'}, 
+            {
+                status: 500,
+            }
+        );
+    } else {
+        // return response;
+        const resData = await response.json();
+        return resData.events;
+    }
+}
 
 
 /* React Router which calles this loader function for me, actually passes an object to this loader function when 
@@ -39,14 +82,19 @@ The params object I can access all the route parameter values as I could do with
 */
 export async function loader({request, params}) {
     const id = params.eventId;
-    const res = await fetch('http://localhost:8080/events/' + id);
-    if(!res.ok){
-        throw json({message: 'Could not fetch details for selected event.'}, {
-            status: 500
-        })
-    } else {
-        return res;
-    }
+
+    return defer({
+        event: await loadEvent(id),
+        events: loadEvents()
+    });
+    // const res = await fetch('http://localhost:8080/events/' + id);
+    // if(!res.ok){
+    //     throw json({message: 'Could not fetch details for selected event.'}, {
+    //         status: 500
+    //     })
+    // } else {
+    //     return res;
+    // }
 }
 
 // delete an event
