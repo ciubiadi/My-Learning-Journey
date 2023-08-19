@@ -19,14 +19,14 @@ const EventDetailPage = () => {
 
     return (
         <>
-            <Suspense fallback={<o style={{textAlign: 'center'}}>Event Loading...</o>}>
+            <Suspense fallback={<p style={{ textAlign: 'center' }}>Loading...</p>}>
                 <Await resolve={event}>
-                    {loadedEvent => <EventItem event={loadedEvent} /> }
+                {(loadedEvent) => <EventItem event={loadedEvent} />}
                 </Await>
             </Suspense>
-            <Suspense fallback={<o style={{textAlign: 'center'}}>Events Loading...</o>}>
+            <Suspense fallback={<p style={{ textAlign: 'center' }}>Loading...</p>}>
                 <Await resolve={events}>
-                    {loadedEvents => <EventsList events={loadedEvents}/>}
+                {(loadedEvents) => <EventsList events={loadedEvents} />}
                 </Await>
             </Suspense>
             {/* <EventItem event={data.event} /> */}
@@ -42,34 +42,41 @@ const EventDetailPage = () => {
 
 export default EventDetailPage;
 
-async function loadEvent(id){
-    const res = await fetch('http://localhost:8080/events/' + id);
-    if(!res.ok){
-        throw json({message: 'Could not fetch details for selected event.'}, {
-            status: 500
-        })
-    } else {
-        const resData = await res.json();
-        return resData.events;
-    }
-}
-
-async function loadEvents () {
-    const response = await fetch('http://localhost:8080/events');
-
+async function loadEvent(id) {
+    const response = await fetch('http://localhost:8080/events/' + id);
+  
     if (!response.ok) {
-        throw json(
-            {message: 'Could not fetch events.'}, 
-            {
-                status: 500,
-            }
-        );
+      throw json(
+        { message: 'Could not fetch details for selected event.' },
+        {
+          status: 500,
+        }
+      );
     } else {
-        // return response;
-        const resData = await response.json();
-        return resData.events;
+      const resData = await response.json();
+      return resData.event;
     }
 }
+
+async function loadEvents() {
+    const response = await fetch('http://localhost:8080/events');
+  
+    if (!response.ok) {
+      // return { isError: true, message: 'Could not fetch events.' };
+      // throw new Response(JSON.stringify({ message: 'Could not fetch events.' }), {
+      //   status: 500,
+      // });
+      throw json(
+        { message: 'Could not fetch events.' },
+        {
+          status: 500,
+        }
+      );
+    } else {
+      const resData = await response.json();
+      return resData.events;
+    }
+  }
 
 
 /* React Router which calles this loader function for me, actually passes an object to this loader function when 
@@ -80,12 +87,12 @@ executing it for me, and that object contains 2 improtant pieces of data :
 The request object could be used to access the URL to extract query parameters or anything like that
 The params object I can access all the route parameter values as I could do with the help of useParams.
 */
-export async function loader({request, params}) {
+export async function loader({ request, params }) {
     const id = params.eventId;
 
     return defer({
-        event: await loadEvent(id),
-        events: loadEvents()
+      event: await loadEvent(id),
+      events: loadEvents(),
     });
     // const res = await fetch('http://localhost:8080/events/' + id);
     // if(!res.ok){
