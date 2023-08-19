@@ -36,6 +36,11 @@ export async function action({request, params}) {
         body: JSON.stringify(eventData)
     });
 
+    // 422 is the validation status code I am setting in backend
+    if(response.status === 422){
+        return response;
+    }
+
     if(!response.ok){
         throw json({ message: 'Could not save event.' }, { status: 500 })
     }

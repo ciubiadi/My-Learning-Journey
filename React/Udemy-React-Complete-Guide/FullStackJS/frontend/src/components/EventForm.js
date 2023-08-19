@@ -1,10 +1,13 @@
-import { Form, useNavigate, useNavigation } from 'react-router-dom';
+import { Form, useNavigate, useNavigation, useActionData } from 'react-router-dom';
 
 import classes from './EventForm.module.css';
 
 function EventForm(props) {
   const navigate = useNavigate();
   const navigation = useNavigation();
+
+  // it does basically the same thing as useLoaderData - it gives me access to the data returned by my action
+  const actionData = useActionData();
 
   const isSubmitting = navigation.state === 'submitting'
 
@@ -18,6 +21,9 @@ function EventForm(props) {
      the data that was submitted as part of the form. The request will not be sent automatically to the backend
      but instead to my action. */
     <Form method="post" className={classes.form}>
+      {actionData && actionData.errors && <ul>
+        {Object.values(actionData.errors).map(error => <li key={error}>{error}</li>)}
+        </ul>}
       <p>
         <label htmlFor="title">Title</label>
         <input 
