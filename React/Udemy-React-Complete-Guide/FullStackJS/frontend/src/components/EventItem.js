@@ -8,7 +8,7 @@ function EventItem({ event }) {
     const proceed = window.confirm('Are you sure you want to delete this event?')
 
     if(proceed) {
-      submit(null, {method: 'DELETE'});
+      submit(null, { method: 'delete' });
     }
   }
 

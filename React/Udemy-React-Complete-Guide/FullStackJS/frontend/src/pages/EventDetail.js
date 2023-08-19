@@ -50,17 +50,19 @@ export async function loader({request, params}) {
 }
 
 // delete an event
-export async function action({params, request}){
+export async function action({ params, request }) {
     const eventId = params.eventId;
-    const res = await fetch('http://localhost:8080/events/' + eventId, {
-        // method: 'DELETE'
-        method: request.method,
+    const response = await fetch('http://localhost:8080/events/' + eventId, {
+      method: request.method,
     });
-
-    if(!res.ok){
-        throw json({message: 'Could not delete event.'}, {
-            status: 500
-        })
-    } 
+  
+    if (!response.ok) {
+      throw json(
+        { message: 'Could not delete event.' },
+        {
+          status: 500,
+        }
+      );
+    }
     return redirect('/events');
-}
+  }
