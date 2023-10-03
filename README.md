@@ -1,4 +1,4 @@
-![Investment_Calculator](https://github.com/ciubiadi/My-Learning-Journey/assets/46215033/9dccb784-0816-4b37-9972-4cac8fa9209b)# My-Learning-Journey
+# My-Learning-Journey
 ## React (Udemy-React-Complete-Guide) Investment Calculator Project
 In this project, a calculator will shown for a given period the amount of earning depending by the amount of savings and interest rate.
 
