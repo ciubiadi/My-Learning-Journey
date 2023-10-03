@@ -6,7 +6,7 @@ The cart shows the total amount of total items and the total cost. After the use
 
 ### What I have learned
 In this project I practiced :
-* state management with Context API : I did manage the state of the cart globally via Context API. In the contet I stored the items, the total amount of the cart and the 3 type of actions ( item addition, deletion and cart clearing).
+* state management with Context API : I did manage the state of the cart globally via Context API. In the context I stored the items, the total amount of the cart and the 3 type of actions ( item addition, deletion and cart clearing).
 * handling modals properly with ReactDOM.createPortal and rendering the modal content conditionally : The modal shows different content depending on the form submission states.  
 * fetching and submitting data to the **firebase database** ( https://food-order-app-5060a-default-rtdb.europe-west1.firebasedatabase.app/orders.json )
 * Building UI reusable components for Form, Input, Modal, Card and others. 
