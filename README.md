@@ -10,10 +10,7 @@ In this project I practiced :
 * fetching and submitting data to the **firebase database** ( https://react-http-8fe27-default-rtdb.europe-west1.firebasedatabase.app/cart.json )
   - I use the actions of redux store slices while fetching data from firebase database( display notifications accordingly) and also while sending data to the firebase.
 * Building UI reusable components for Notifications, Cards, Layout and Header.
-
-State Management
-Re-usable components
-Error handling
+* Error handling
 
 ### App View
 ![Screenshot 2023-10-03 at 23 01 38](https://github.com/ciubiadi/My-Learning-Journey/assets/46215033/8f4bb255-f905-4db4-b8dd-be1939b23c21)
