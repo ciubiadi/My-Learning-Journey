@@ -9,16 +9,16 @@ An Effect (or SideEffect) deals with anything else :
 - not bring directly something to the screen
 These tasks must happen outside the normal component evaluation
 
-We can handle with the useEffect React Hook the side effects.
+I can handle with the useEffect React Hook the side effects.
 
-Inside the useEffect method, we will have :
+Inside the useEffect method, I will have :
 - a function that should be executed 
 after every component evaluation if the specified dependencies changed
 - dependencies of this effect - the function only runs if the dependencies changed
 syntax : useEffect(() => {}, [dependencies]);
 
 
-If you want a useEffect to run only once you need to have an empty array for the dependencies parameter.
+If I want a useEffect to run only once, I need to have an empty array for the dependencies parameter.
 
 useEffect Summary: 
 - if no dependencies parameter is empty than it will run only once
@@ -30,7 +30,7 @@ useEffect only runs AFTER the state was changed!!!
 //// Reducers
 useReducer helps with state management and is especially useful for more complex state
  
-Sometimes you have more complex state - for example if it got multiple states, multiple ways of changing it
+Sometimes I have more complex state - for example if it got multiple states, multiple ways of changing it
 or dependecies to other states
 
 useState vs useReducer
