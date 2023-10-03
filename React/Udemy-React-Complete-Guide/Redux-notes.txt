@@ -6,7 +6,7 @@ Cross-Component State:
 - State that affects multiuple components (ex: open/close state of a modal overlay)
 - require prop chains
 
-Aoo Wide State:
+App Wide State:
 - State that affecets the entire app ( ex: User authentication status )
 - require props chains
 
