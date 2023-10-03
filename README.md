@@ -19,6 +19,7 @@ Error handling
 ![Screenshot 2023-10-03 at 23 01 38](https://github.com/ciubiadi/My-Learning-Journey/assets/46215033/8f4bb255-f905-4db4-b8dd-be1939b23c21)
 
 ### Structure
+```
 Redux Project
 ├── package.json
 ├── package-lock.json
@@ -56,5 +57,6 @@ Redux Project
     |   └── ui-slice.js
     |
     ├── App.js
-    ├── index.js
+    └── index.js
+```
     └── idnex.css
