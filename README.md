@@ -57,6 +57,6 @@ Redux Project
     |   └── ui-slice.js
     |
     ├── App.js
-    └── index.js
-```
+    ├── index.js
     └── idnex.css
+```
