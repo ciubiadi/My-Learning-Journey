@@ -1,5 +1,6 @@
-# My-Learning-Journey - React Full Stack Events App
-In this app I did practice React Router.
+# My-Learning-Journey
+## React Full Stack Events App
+In this app I practiced mainly React Router.
 
 ## What I have practiced 
 The backend part of the app was provided by the trainer and I played a little bit only with the route of events. ( __React/Udemy-React-Complete-Guide/FullStackJS/backend/routes/events.js_ )
