@@ -7,7 +7,7 @@ This app allows the user to add the available books to the cart. The user can ch
 In this project I practiced :
 * State Management with Redux : I did manage the state of the cart globally via Redux. However, the available products(that can be added to the cart) are mapped from a local array.
   - I use two different slices in the Redux store, one for cart(addition/removal of cart items and cart quantity update) and one for ui(cart showing/hiding and notification display)
-* fetching and submitting data to the **firebase database** ( https://react-http-8fe27-default-rtdb.europe-west1.firebasedatabase.app/cart.json )
+* Fetching and submitting data to the **firebase database** ( https://react-http-8fe27-default-rtdb.europe-west1.firebasedatabase.app/cart.json )
   - I use the actions of redux store slices while fetching data from firebase database( display notifications accordingly) and also while sending data to the firebase.
 * Building UI reusable components for Notifications, Cards, Layout and Header.
 * Error handling
