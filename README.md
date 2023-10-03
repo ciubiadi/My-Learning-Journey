@@ -58,5 +58,5 @@ Redux Project
     |
     ├── App.js
     ├── index.js
-    └── idnex.css
+    └── index.css
 ```
