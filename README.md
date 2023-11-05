@@ -4,7 +4,7 @@
 This app allows the user to add the available foods to the cart and submit the cart. The user can add different quantities of the items and the cart will be live updated (with a smooth animation as well for each cart update). 
 The cart shows the total amount of total items and the total cost. After the user clicks on "Order" action, a form with user's address needs to be filled and submited in order for the order to be completed. The link for the demo app is the following one : [Food-Order-App](https://the-food-order-react-app.netlify.app/).
 
-### What I have learned
+### What I learned
 In this project I practiced :
 * state management with Context API : I did manage the state of the cart globally via Context API. In the context I stored the items, the total amount of the cart and the 3 type of actions ( item addition, deletion and cart clearing).
 * handling modals properly with ReactDOM.createPortal and rendering the modal content conditionally : The modal shows different content depending on the form submission states.  
